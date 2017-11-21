@@ -46,6 +46,13 @@
 % Fonts %
 %%%%%%%%%
 
+%-------------------------------------------------------------------------------
+%                Configuration for directory locations
+%-------------------------------------------------------------------------------
+% Configure a directory location for fonts(default: 'fonts/')
+\newcommand*{\fontdir}[1][fonts/]{\def\@fontdir{#1}}
+\fontdir
+
 % \RequirePackage[quiet]{fontspec}
 % \RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
 % 
@@ -62,13 +69,20 @@
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[math-style=TeX]{unicode-math}
 
+% Needed to use icons from font-awesome
+% (https://github.com/posquit0/latex-fontawesome)
+\RequirePackage{fontawesome}
+% Set the FontAwesome font to be up-to-date.
+\newfontfamily\FA[Path=\@fontdir]{FontAwesome}
+
 \newfontfamily\bodyfont
-[BoldFont=texgyreheros-bold.otf,
+[Path=\@fontdir,
+BoldFont=texgyreheros-bold.otf,
 ItalicFont=texgyreheros-italic.otf,
 BoldItalicFont=texgyreheros-bolditalic.otf]
 {texgyreheros-regular.otf}
-\newfontfamily\thinfont[]{Lato-Light.ttf}
-\newfontfamily\headingfont[]{texgyreheros-bold.otf}
+\newfontfamily\thinfont[Path=\@fontdir]{Lato-Light.ttf}
+\newfontfamily\headingfont[Path=\@fontdir]{texgyreheros-bold.otf}
 
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont
@@ -309,3 +323,301 @@ BoldItalicFont=texgyreheros-bolditalic.otf
 
 \RequirePackage[left=6.1cm,top=2cm,right=1.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
 \RequirePackage{hyperref}
+
+%%%%%%%%%%%%%%
+% Awesome CV %
+%%%%%%%%%%%%%%
+
+%-------------------------------------------------------------------------------
+%                Commands for personal information
+%-------------------------------------------------------------------------------
+% Define photo ID
+% Usage: \photo[circle|rectangle,edge|noedge,left|right]{<path-to-image>}
+\newcommand{\photo}[2][circle,edge,left]{%
+\def\@photo{#2}
+\@for\tmp:=#1\do{%
+  \ifthenelse{\equal{\tmp}{circle} \or \equal{\tmp}{rectangle}}%
+    {\let\@photoshape\tmp}{}%
+  \ifthenelse{\equal{\tmp}{edge} \or \equal{\tmp}{noedge}}%
+    {\let\@photoedge\tmp}{}%
+  \ifthenelse{\equal{\tmp}{left} \or \equal{\tmp}{right}}%
+    {\let\@photoalign\tmp}{}%
+}%
+}
+\def\@photoshape{circle}
+\def\@photoedge{edge}
+\def\@photoalign{left}
+
+% Define writer's name
+% Usage: \name{<firstname>}{<lastname>}
+% Usage: \firstname{<firstname>}
+% Usage: \lastname{<lastname>}
+% Usage: \familyname{<familyname>}
+\newcommand*{\name}[2]{\def\@firstname{#1}\def\@lastname{#2}}
+\newcommand*{\firstname}[1]{\def\@firstname{#1}}
+\newcommand*{\lastname}[1]{\def\@lastname{#1}}
+\newcommand*{\familyname}[1]{\def\@lastname{#1}}
+\def\@familyname{\@lastname}
+
+% Define writer's address
+% Usage: \address{<address>}
+\newcommand*{\address}[1]{\def\@address{#1}}
+
+% Define writer's position
+% Usage: \name{<position>}
+\newcommand*{\position}[1]{\def\@position{#1}}
+
+% Defines writer's mobile (optional)
+% Usage: \mobile{<mobile number>}
+% \newcommand*{\mobile}[1]{\def\@mobile{#1}}
+\newcommand*{\mobile}[1]{\href{tel://#1}{#1}} % \faMobile\acvHeaderIconSep
+
+% Defines writer's email (optional)
+% Usage: \email{<email adress>}
+% \newcommand*{\email}[1]{\def\@email{#1}}
+\newcommand*{\email}[1]{\href{mailto://#1}{#1}}
+
+% Defines writer's homepage (optional)
+% Usage: \homepage{<url>}
+% \newcommand*{\homepage}[1]{\def\@homepage{#1}}
+\newcommand*{\homepage}[1]{\href{https://#1}{#1}}
+
+% Defines writer's github (optional)
+% Usage: \github{<github-nick>}
+% \newcommand*{\github}[1]{\def\@github{#1}}
+\newcommand*{\github}[1]{\href{https://github.com/#1}{\faGithubAlt\acvHeaderIconSep#1}}
+
+% Defines writer's gitlab (optional)
+% Usage: \gitlab{<gitlab-nick>}
+% \newcommand*{\gitlab}[1]{\def\@gitlab{#1}}
+\newcommand*{\gitlab}[1]{\href{https://gitlab.com/#1}{\faGitlab\acvHeaderIconSep#1}}
+
+% Defines writer's stackoverflow profile (optional)
+% Usage: \stackoverflow{<so userid>}{<so username>}
+%   e.g.https://stackoverflow.com/users/123456/sam-smith
+%       would be \stackoverflow{123456}{sam-smith}
+% \newcommand*{\stackoverflow}[2]{\def\@stackoverflowid{#1}\def\@stackoverflowname{#2}}
+\newcommand*{\stackoverflow}[2]{\href{https://stackoverflow.com/users/#1}{\faStackOverflow\acvHeaderIconSep#2}}
+
+% Defines writer's linked-in (optional)
+% Usage: \linkedin{<linked-in-nick>}
+% \newcommand*{\linkedin}[1]{\def\@linkedin{#1}}
+\newcommand*{\linkedin}[1]{\href{https://www.linkedin.com/in/#1}{\faLinkedinSquare\acvHeaderIconSep#1}}
+
+% Usage: \twitter{<twitter handle>}
+% \newcommand*{\twitter}[1]{\def\@twitter{#1}}
+\newcommand*{\twitter}[1]{\href{https://twitter.com/#1}{\faTwitter\acvHeaderIconSep#1}}
+
+% Defines writer's skype (optional)
+% Usage: \skype{<skype account>}
+% \newcommand*{\skype}[1]{\def\@skype{#1}}
+\newcommand*{\skype}[1]{\href{skype://#1?call}{\faSkype\acvHeaderIconSep#1}}
+
+% Defines writer's reddit (optional)
+% Usage: \reddit{<reddit account>}
+\newcommand*{\reddit}[1]{\href{https://www.reddit.com/user/#1}{\faReddit\acvHeaderIconSep#1}}
+
+% Defines writer's xing (optional)
+% Usage: \xing{<xing name>}
+\newcommand*{\xing}[1]{\def\@xing{#1}}
+
+% Defines writer's twitter (optional)
+% Defines writer's extra informations (optional)
+% Usage: \extrainfo{<extra informations>}
+\newcommand*{\extrainfo}[1]{\def\@extrainfo{#1}}
+
+% Defines writer's quote (optional)
+% Usage: \quote{<quote>}
+\renewcommand*{\quote}[1]{\def\@quote{#1}}
+
+% Defines recipient's information (cover letter only)
+% Usage: \recipient{<recipient name>}{<recipient address>}
+% Usage: \recipientname{<recipient name>}
+% Usage: \recipientaddress{<recipient address>}
+\newcommand*{\recipient}[2]{\def\@recipientname{#1}\def\@recipientaddress{#2}}
+\newcommand*{\recipientname}[1]{\def\@recipientname{#1}}
+\newcommand*{\recipientaddress}[1]{\def\@recipientaddress{#1}}
+
+% Defines the title for letter (cover letter only, optional)
+% Usage: \lettertitle{<title>}
+\newcommand*{\lettertitle}[1]{\def\@lettertitle{#1}}
+
+% Defines the date for letter (cover letter only)
+% Usage: \letterdate{<date>}
+\newcommand*{\letterdate}[1]{\def\@letterdate{#1}}
+
+% Defines a message of opening for letter (cover letter only)
+% Usage: \letteropening{<message>}
+\newcommand*{\letteropening}[1]{\def\@letteropening{#1}}
+
+% Defines a message of closing for letter (cover letter only)
+% Usage: \letterclosing{<message>}
+\newcommand*{\letterclosing}[1]{\def\@letterclosing{#1}}
+
+% Defines an enclosure for letter (cover letter only, optional)
+% Usage: \letterenclosure[<enclosure name>]{<enclosure>}
+\newcommand*{\letterenclname}[1][Enclosure]{\def\@letterenclname{#1}}
+\newcommand*{\letterenclosure}[2][]{%
+% if an optional argument is provided, use it to redefine \enclname
+\ifthenelse{\equal{#1}{}}{}{\def\@letterenclname{#1}}
+\def\@letterenclosure{#2}
+}
+
+
+%-------------------------------------------------------------------------------
+%                Commands for extra
+%-------------------------------------------------------------------------------
+%% Define helper macros a user can change easily
+% Header
+\newcommand{\acvHeaderNameDelim}{\space}
+\newcommand{\acvHeaderAfterNameSkip}{.4mm}
+\newcommand{\acvHeaderAfterPositionSkip}{.4mm}
+\newcommand{\acvHeaderAfterAddressSkip}{-.5mm}
+\newcommand{\acvHeaderIconSep}{\space}
+\newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+\newcommand{\acvHeaderAfterSocialSkip}{6mm}
+\newcommand{\acvHeaderAfterQuoteSkip}{5mm}
+
+% Others
+\newcommand{\acvSectionTopSkip}{3mm}
+\newcommand{\acvSectionContentTopSkip}{2.5mm}
+
+
+% %-------------------------------------------------------------------------------
+% %                Commands for utilities
+% %-------------------------------------------------------------------------------
+% % Use to align an element of tabular table
+% \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% % Use to draw horizontal line with specific thickness
+% \def\vhrulefill#1{\leavevmode\leaders\hrule\@height#1\hfill \kern\z@}
+
+% % Use to execute conditional statements by checking empty string
+% \newcommand*{\ifempty}[3]{\ifthenelse{\isempty{#1}}{#2}{#3}}
+
+
+%-------------------------------------------------------------------------------
+%                Commands for elements of CV structure
+%-------------------------------------------------------------------------------
+% Define a header for CV
+% Usage: \makecvheader
+\newcommand*{\makecvheader}[1][C]{%
+\newcommand*{\drawphoto}{%
+  \ifthenelse{\isundefined{\@photo}}{}{%
+    \newlength{\photodim}
+    \ifthenelse{\equal{\@photoshape}{circle}}%
+      {\setlength{\photodim}{1.3cm}}%
+      {\setlength{\photodim}{1.8cm}}%
+    \ifthenelse{\equal{\@photoedge}{edge}}%
+      {\def\@photoborder{darkgray}}%
+      {\def\@photoborder{none}}%
+    \begin{tikzpicture}%
+      \node[\@photoshape, draw=\@photoborder, line width=0.3mm, inner sep=\photodim, fill overzoom image=\@photo] () {};
+    \end{tikzpicture}
+  }%
+}
+\newlength{\headertextwidth}
+\newlength{\headerphotowidth}
+\ifthenelse{\isundefined{\@photo}}{
+  \setlength{\headertextwidth}{\textwidth}
+  \setlength{\headerphotowidth}{0cm}
+}{%
+  \setlength{\headertextwidth}{0.76\textwidth}
+  \setlength{\headerphotowidth}{0.24\textwidth}
+}%
+\begin{minipage}[c]{\headerphotowidth}%
+  \ifthenelse{\equal{\@photoalign}{left}}{\raggedright\drawphoto}{}
+\end{minipage}
+\begin{minipage}[c]{\headertextwidth}
+  \ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}{\centering}}
+  \headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}%
+  \\[\acvHeaderAfterNameSkip]%
+  \ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
+  \ifthenelse{\isundefined{\@address}}{}{\headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
+  \headersocialstyle{%
+    \newbool{isstart}%
+    \setbool{isstart}{true}%
+    \ifthenelse{\isundefined{\@mobile}}%
+      {}%
+      {%
+        \faMobile\acvHeaderIconSep\@mobile%
+        \setbool{isstart}{false}%
+      }%
+    \ifthenelse{\isundefined{\@email}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+        \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}%
+      }%
+    \ifthenelse{\isundefined{\@homepage}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+        \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}%
+      }%
+    \ifthenelse{\isundefined{\@github}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+        \href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}%
+      }%
+    \ifthenelse{\isundefined{\@gitlab}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+        \href{https://gitlab.com/\@gitlab}{\faGitlab\acvHeaderIconSep\@gitlab}%
+      }%
+    \ifthenelse{\isundefined{\@stackoverflowid}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+        \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}%
+      }%
+    \ifthenelse{\isundefined{\@linkedin}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+        \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}%
+      }%
+    \ifthenelse{\isundefined{\@twitter}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+        \href{https://twitter.com/\@twitter}{\faTwitter\acvHeaderIconSep\@twitter}%
+      }%
+    \ifthenelse{\isundefined{\@skype}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+        \faSkype\acvHeaderIconSep\@skype%
+      }%
+    \ifthenelse{\isundefined{\@reddit}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+        \href{https://www.reddit.com/user/\@reddit}{\faReddit\acvHeaderIconSep\@reddit}%
+      }%
+    \ifthenelse{\isundefined{\@xing}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+        \href{https://www.xing.com/profile/\@xing}{\faXingSquare\acvHeaderIconSep\@xing}
+      }%
+    \ifthenelse{\isundefined{\@extrainfo}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+        \@extrainfo%
+      }%
+  } \\[\acvHeaderAfterSocialSkip]%
+  \ifthenelse{\isundefined{\@quote}}%
+    {}%
+    {\headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}%
+\end{minipage}%
+\begin{minipage}[c]{\headerphotowidth}%
+  \ifthenelse{\equal{\@photoalign}{right}}{\raggedleft\drawphoto}{}
+\end{minipage}
+}
+
