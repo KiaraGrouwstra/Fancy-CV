@@ -1,0 +1,6 @@
+/build
+/fonts
+*.aux
+*.fdb_latexmk
+*.log
+*.fls
