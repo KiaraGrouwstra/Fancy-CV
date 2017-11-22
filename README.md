@@ -1,12 +1,10 @@
 Fancy CV
-```
-# compile
-bash run.sh
 
+```bash
+# build
+bash run.sh
 # sync general changes
-for BRANCH in $(ls .git/refs/heads);
-    do git checkout $BRANCH;
-    git merge master $BRANCH;
-done;
-git checkout master;
+bash sync.sh
+# sync general changes and rebuild
+bash sync.sh -b
 ```
