@@ -19,7 +19,7 @@ branches=`ls .git/refs/heads`;
 
 # merge changes
 for BRANCH in $branches; do
-    if [ $BRANCH -ne "master" ]; then
+    if [ $BRANCH != "master" ]; then
         git checkout $BRANCH;
         git merge --squash master $BRANCH -m "merge";
         git reset --mixed origin/master
