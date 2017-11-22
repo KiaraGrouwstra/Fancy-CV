@@ -22,8 +22,8 @@ for BRANCH in $branches; do
     if [ $BRANCH != "master" ]; then
         git checkout $BRANCH;
         git merge --squash master $BRANCH -m "merge";
-        git reset --mixed master
-        git commit -am "$BRANCH";
+        # git reset --mixed master
+        # git commit -am "$BRANCH";
         if [ $? -ne 0 ]; then
             echo "couldn't merge!"
             exit 1
