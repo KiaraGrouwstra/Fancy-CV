@@ -5,7 +5,7 @@ while getopts ":b:" opt; do
     \?) echo "Invalid option: -$OPTARG ($opt)" >&2;;
   esac
 done
-branch=`git rev-parse --abbrev-ref HEAD`
+# branch=`git rev-parse --abbrev-ref HEAD`
 branches=`ls .git/refs/heads`;
 for BRANCH in $branches; do
     git checkout $BRANCH;
@@ -17,4 +17,5 @@ if [ "$build" = true ]; then
         bash run.sh;
     done;
 fi
-git checkout $branch;
+# git checkout $branch;
+git checkout master;
