@@ -10,7 +10,7 @@ done
 
 # test branch switch
 git checkout .
-if [ $? -ne 0 ] then
+if [ $? -ne 0 ]; then
     echo "couldn't switch branch!"
     exit 1
 fi
@@ -19,12 +19,12 @@ branches=`ls .git/refs/heads`;
 
 # merge changes
 for BRANCH in $branches; do
-    if [ $BRANCH -ne "master" ] then
+    if [ $BRANCH -ne "master" ]; then
         git checkout $BRANCH;
         git merge --squash master $BRANCH -m "merge";
         git reset --mixed origin/master
         git commit -am "$BRANCH";
-        if [ $? -ne 0 ] then
+        if [ $? -ne 0 ]; then
             echo "couldn't merge!"
             exit 1
         fi
