@@ -9,7 +9,7 @@ branch=`git rev-parse --abbrev-ref HEAD`
 branches=`ls .git/refs/heads`;
 for BRANCH in $branches; do
     git checkout $BRANCH;
-    git merge master $BRANCH -m "merge";
+    git merge --squash master $BRANCH -m "$BRANCH";
 done;
 if [ "$build" = true ]; then
     for BRANCH in $branches; do
