@@ -22,7 +22,11 @@ for BRANCH in $branches; do
     if [ $BRANCH != "master" ]; then
         git checkout $BRANCH;
         git merge --squash master $BRANCH -m "merge";
+<<<<<<< HEAD
+        git reset --mixed origin/master
+=======
         git reset --mixed master
+>>>>>>> master
         git commit -am "$BRANCH";
         if [ $? -ne 0 ]; then
             echo "couldn't merge!"
