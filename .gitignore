@@ -1,5 +1,5 @@
 /build
-/fonts
+# /fonts
 *.aux
 *.fdb_latexmk
 *.log
