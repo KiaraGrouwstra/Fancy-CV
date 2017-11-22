@@ -11,6 +11,8 @@
 \newcommand{\langen}[1]{\ifen\selectlanguage{english}#1\fi}
 \newcommand{\langnl}[1]{\ifnl\selectlanguage{dutch}#1\fi}
 
+% \langen{}\langnl{}
+
 \begin{document}
 \header{tycho}{grouwstra}
        {data scientist}
@@ -18,7 +20,7 @@
 
 % In the aside, each new line forces a line break
 \begin{aside}
-  \section{about}
+  \section{\langen{about}\langnl{contact}}
   \href{https://goo.gl/maps/ABkdyUnpS2L2}{Maria van der Duinstraat 8
   Poortugaal
   \langen{The Netherlands}\langnl{Nederland}}
@@ -59,7 +61,8 @@
 
 % \langen{\section{interests}}
 % \langnl{\section{interesses}}
-\section{skills}
+\langen{\section{skills}}
+\langnl{\section{vaardigheden}}
 
 apache spark,
 big data,
