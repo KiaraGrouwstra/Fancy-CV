@@ -2,7 +2,7 @@
 
 # get -p switch
 while getopts ":p" opt; do
-  case $opt in
+  case $OPTARG in
     p)
     echo "-p"
     build=true
