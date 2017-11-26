@@ -25,6 +25,7 @@
 \definecolor{orange}{HTML}{FDA333}
 \definecolor{purple}{HTML}{D3A4F9}
 \definecolor{red}{HTML}{FB4485}
+\definecolor{awesome-red}{HTML}{DC3522}
 \definecolor{blue}{HTML}{6CE0F1}
 
 \ifdefined\@cv@print
@@ -135,12 +136,14 @@ BoldItalicFont=texgyreheros-bolditalic.otf
   {%
     \color{%
       \ifcase\value{colorCounter}%
-        blue\or%
-        red\or%
-        orange\or%
-        green\or%
-        purple\else%
-        headercolor\fi%
+        % blue\or%
+        % red\or%
+        % orange\or%
+        % green\or%
+        % purple\else%
+        awesome-red\else%
+        % headercolor\fi%
+        awesome-red\fi%
     } #1#2#3%
   }%
   \stepcounter{colorCounter}%
