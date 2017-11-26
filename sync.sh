@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # get -p switch
-while getopts ":b:" opt; do
-  case $OPTARG in
-    b) build=true;;
+while getopts ":p:" opt; do
+  case $opt in
+    p) build=true;;
     \?) echo "Invalid option: -$OPTARG ($opt)" >&2;;
   esac
 done
@@ -21,7 +21,7 @@ branches=`ls .git/refs/heads`;
 for BRANCH in $branches; do
     if [ $BRANCH != "master" ]; then
         git checkout $BRANCH;
-        git merge --squash master $BRANCH -m "merge";
+        git merge master $BRANCH -m "merge"; #  --squash
         # git reset --mixed master
         # git commit -am "$BRANCH";
         if [ $? -ne 0 ]; then
