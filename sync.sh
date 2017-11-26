@@ -1,9 +1,12 @@
 #!/bin/bash
 
 # get -p switch
-while getopts ":p:" opt; do
+while getopts ":p" opt; do
   case $opt in
-    p) build=true;;
+    p)
+    echo "-p"
+    build=true
+    ;;
     \?) echo "Invalid option: -$OPTARG ($opt)" >&2;;
   esac
 done
