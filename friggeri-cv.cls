@@ -405,7 +405,7 @@ BoldItalicFont=texgyreheros-bolditalic.otf
 % Defines writer's linked-in (optional)
 % Usage: \linkedin{<linked-in-nick>}
 % \newcommand*{\linkedin}[1]{\def\@linkedin{#1}}
-\newcommand*{\linkedin}[1]{\href{https://www.linkedin.com/in/#1}{\faLinkedinSquare\acvHeaderIconSep#1}}
+\newcommand*{\linkedin}[1]{\href{https://linkedin.com/in/#1}{\faLinkedinSquare\acvHeaderIconSep#1}}
 
 % Usage: \twitter{<twitter handle>}
 % \newcommand*{\twitter}[1]{\def\@twitter{#1}}
@@ -418,7 +418,7 @@ BoldItalicFont=texgyreheros-bolditalic.otf
 
 % Defines writer's reddit (optional)
 % Usage: \reddit{<reddit account>}
-\newcommand*{\reddit}[1]{\href{https://www.reddit.com/user/#1}{\faReddit\acvHeaderIconSep#1}}
+\newcommand*{\reddit}[1]{\href{https://reddit.com/user/#1}{\faReddit\acvHeaderIconSep#1}}
 
 % Defines writer's xing (optional)
 % Usage: \xing{<xing name>}
@@ -582,7 +582,7 @@ BoldItalicFont=texgyreheros-bolditalic.otf
       {}%
       {%
         \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-        \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}%
+        \href{https://linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}%
       }%
     \ifthenelse{\isundefined{\@twitter}}%
       {}%
@@ -600,13 +600,13 @@ BoldItalicFont=texgyreheros-bolditalic.otf
       {}%
       {%
         \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-        \href{https://www.reddit.com/user/\@reddit}{\faReddit\acvHeaderIconSep\@reddit}%
+        \href{https://reddit.com/user/\@reddit}{\faReddit\acvHeaderIconSep\@reddit}%
       }%
     \ifthenelse{\isundefined{\@xing}}%
       {}%
       {%
         \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-        \href{https://www.xing.com/profile/\@xing}{\faXingSquare\acvHeaderIconSep\@xing}
+        \href{https://xing.com/profile/\@xing}{\faXingSquare\acvHeaderIconSep\@xing}
       }%
     \ifthenelse{\isundefined{\@extrainfo}}%
       {}%
