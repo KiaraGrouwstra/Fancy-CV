@@ -6,5 +6,5 @@ bash run.sh
 # sync general changes
 bash sync.sh
 # sync general changes and rebuild
-bash sync.sh -b
+bash sync.sh -p
 ```
