@@ -18,4 +18,4 @@ jobs:
         code: latest
         prerelease: true
         assets: >
-          cv.pdf:cv-kiara-en.pdf:application/pdf
+          cv.pdf:cv-kiara-nl.pdf:application/pdf
