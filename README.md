@@ -4,6 +4,7 @@ Fancy CV
 # install deps
 tlmgr install fontawesome
 # alternatively, on nixos, install texlive.combined.scheme-full
+# on arch, install texlive-core texlive-latexextra
 # build
 bash run.sh
 # sync general changes

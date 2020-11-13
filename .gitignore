@@ -4,3 +4,8 @@
 *.fdb_latexmk
 *.log
 *.fls
+*.bcf
+*.out
+*.pdf
+*.xml
+*.gz

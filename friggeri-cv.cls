@@ -72,9 +72,9 @@
 
 % Needed to use icons from font-awesome
 % (https://github.com/posquit0/latex-fontawesome)
-\RequirePackage{fontawesome}
+% \RequirePackage{fontawesome}
 % Set the FontAwesome font to be up-to-date.
-\newfontfamily\FA[Path=\@fontdir]{FontAwesome}
+% \newfontfamily\FA[Path=\@fontdir]{FontAwesome}
 
 \newfontfamily\bodyfont
 [Path=\@fontdir,
@@ -385,44 +385,44 @@ BoldItalicFont=texgyreheros-bolditalic.otf
 % \newcommand*{\homepage}[1]{\def\@homepage{#1}}
 \newcommand*{\homepage}[1]{\href{https://#1}{#1}}
 
-% Defines writer's github (optional)
-% Usage: \github{<github-nick>}
-% \newcommand*{\github}[1]{\def\@github{#1}}
-\newcommand*{\github}[1]{\href{https://github.com/#1}{\faGithubAlt\acvHeaderIconSep#1}}
+% % Defines writer's github (optional)
+% % Usage: \github{<github-nick>}
+% % \newcommand*{\github}[1]{\def\@github{#1}}
+% \newcommand*{\github}[1]{\href{https://github.com/#1}{\faGithubAlt\acvHeaderIconSep#1}}
 
-% Defines writer's gitlab (optional)
-% Usage: \gitlab{<gitlab-nick>}
-% \newcommand*{\gitlab}[1]{\def\@gitlab{#1}}
-\newcommand*{\gitlab}[1]{\href{https://gitlab.com/#1}{\faGitlab\acvHeaderIconSep#1}}
+% % Defines writer's gitlab (optional)
+% % Usage: \gitlab{<gitlab-nick>}
+% % \newcommand*{\gitlab}[1]{\def\@gitlab{#1}}
+% \newcommand*{\gitlab}[1]{\href{https://gitlab.com/#1}{\faGitlab\acvHeaderIconSep#1}}
 
-% Defines writer's stackoverflow profile (optional)
-% Usage: \stackoverflow{<so userid>}{<so username>}
-%   e.g.https://stackoverflow.com/users/123456/sam-smith
-%       would be \stackoverflow{123456}{sam-smith}
-% \newcommand*{\stackoverflow}[2]{\def\@stackoverflowid{#1}\def\@stackoverflowname{#2}}
-\newcommand*{\stackoverflow}[2]{\href{https://stackoverflow.com/users/#1}{\faStackOverflow\acvHeaderIconSep#2}}
+% % Defines writer's stackoverflow profile (optional)
+% % Usage: \stackoverflow{<so userid>}{<so username>}
+% %   e.g.https://stackoverflow.com/users/123456/sam-smith
+% %       would be \stackoverflow{123456}{sam-smith}
+% % \newcommand*{\stackoverflow}[2]{\def\@stackoverflowid{#1}\def\@stackoverflowname{#2}}
+% \newcommand*{\stackoverflow}[2]{\href{https://stackoverflow.com/users/#1}{\faStackOverflow\acvHeaderIconSep#2}}
 
-% Defines writer's linked-in (optional)
-% Usage: \linkedin{<linked-in-nick>}
-% \newcommand*{\linkedin}[1]{\def\@linkedin{#1}}
-\newcommand*{\linkedin}[1]{\href{https://linkedin.com/in/#1}{\faLinkedinSquare\acvHeaderIconSep#1}}
+% % Defines writer's linked-in (optional)
+% % Usage: \linkedin{<linked-in-nick>}
+% % \newcommand*{\linkedin}[1]{\def\@linkedin{#1}}
+% \newcommand*{\linkedin}[1]{\href{https://linkedin.com/in/#1}{\faLinkedinSquare\acvHeaderIconSep#1}}
 
-% Usage: \twitter{<twitter handle>}
-% \newcommand*{\twitter}[1]{\def\@twitter{#1}}
-\newcommand*{\twitter}[1]{\href{https://twitter.com/#1}{\faTwitter\acvHeaderIconSep#1}}
+% % Usage: \twitter{<twitter handle>}
+% % \newcommand*{\twitter}[1]{\def\@twitter{#1}}
+% \newcommand*{\twitter}[1]{\href{https://twitter.com/#1}{\faTwitter\acvHeaderIconSep#1}}
 
-% Defines writer's skype (optional)
-% Usage: \skype{<skype account>}
-% \newcommand*{\skype}[1]{\def\@skype{#1}}
-\newcommand*{\skype}[1]{\href{skype://#1?call}{\faSkype\acvHeaderIconSep#1}}
+% % Defines writer's skype (optional)
+% % Usage: \skype{<skype account>}
+% % \newcommand*{\skype}[1]{\def\@skype{#1}}
+% \newcommand*{\skype}[1]{\href{skype://#1?call}{\faSkype\acvHeaderIconSep#1}}
 
-% Defines writer's reddit (optional)
-% Usage: \reddit{<reddit account>}
-\newcommand*{\reddit}[1]{\href{https://reddit.com/user/#1}{\faReddit\acvHeaderIconSep#1}}
+% % Defines writer's reddit (optional)
+% % Usage: \reddit{<reddit account>}
+% \newcommand*{\reddit}[1]{\href{https://reddit.com/user/#1}{\faReddit\acvHeaderIconSep#1}}
 
-% Defines writer's xing (optional)
-% Usage: \xing{<xing name>}
-\newcommand*{\xing}[1]{\def\@xing{#1}}
+% % Defines writer's xing (optional)
+% % Usage: \xing{<xing name>}
+% \newcommand*{\xing}[1]{\def\@xing{#1}}
 
 % Defines writer's twitter (optional)
 % Defines writer's extra informations (optional)
@@ -545,20 +545,20 @@ BoldItalicFont=texgyreheros-bolditalic.otf
     \ifthenelse{\isundefined{\@mobile}}%
       {}%
       {%
-        \faMobile\acvHeaderIconSep\@mobile%
+        📞\acvHeaderIconSep\@mobile%
         \setbool{isstart}{false}%
       }%
     \ifthenelse{\isundefined{\@email}}%
       {}%
       {%
         \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-        \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}%
+        \href{mailto:\@email}{✉️\acvHeaderIconSep\@email}%
       }%
     \ifthenelse{\isundefined{\@homepage}}%
       {}%
       {%
         \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-        \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}%
+        \href{http://\@homepage}{🏠\acvHeaderIconSep\@homepage}%
       }%
     \ifthenelse{\isundefined{\@github}}%
       {}%
@@ -566,12 +566,12 @@ BoldItalicFont=texgyreheros-bolditalic.otf
         \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
         \href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}%
       }%
-    \ifthenelse{\isundefined{\@gitlab}}%
-      {}%
-      {%
-        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-        \href{https://gitlab.com/\@gitlab}{\faGitlab\acvHeaderIconSep\@gitlab}%
-      }%
+    % \ifthenelse{\isundefined{\@gitlab}}%
+    %   {}%
+    %   {%
+    %     \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+    %     \href{https://gitlab.com/\@gitlab}{\faGitlab\acvHeaderIconSep\@gitlab}%
+    %   }%
     \ifthenelse{\isundefined{\@stackoverflowid}}%
       {}%
       {%
@@ -584,30 +584,18 @@ BoldItalicFont=texgyreheros-bolditalic.otf
         \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
         \href{https://linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}%
       }%
-    \ifthenelse{\isundefined{\@twitter}}%
-      {}%
-      {%
-        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-        \href{https://twitter.com/\@twitter}{\faTwitter\acvHeaderIconSep\@twitter}%
-      }%
-    \ifthenelse{\isundefined{\@skype}}%
-      {}%
-      {%
-        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-        \faSkype\acvHeaderIconSep\@skype%
-      }%
-    \ifthenelse{\isundefined{\@reddit}}%
-      {}%
-      {%
-        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-        \href{https://reddit.com/user/\@reddit}{\faReddit\acvHeaderIconSep\@reddit}%
-      }%
-    \ifthenelse{\isundefined{\@xing}}%
-      {}%
-      {%
-        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-        \href{https://xing.com/profile/\@xing}{\faXingSquare\acvHeaderIconSep\@xing}
-      }%
+    % \ifthenelse{\isundefined{\@twitter}}%
+    %   {}%
+    %   {%
+    %     \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+    %     \href{https://twitter.com/\@twitter}{\faTwitter\acvHeaderIconSep\@twitter}%
+    %   }%
+    % \ifthenelse{\isundefined{\@skype}}%
+    %   {}%
+    %   {%
+    %     \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+    %     \faSkype\acvHeaderIconSep\@skype%
+    %   }%
     \ifthenelse{\isundefined{\@extrainfo}}%
       {}%
       {%
