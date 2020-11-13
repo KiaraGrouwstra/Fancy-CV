@@ -9,6 +9,7 @@ jobs:
     - uses: actions/checkout@master
     - uses: xu-cheng/latex-action@master
       with:
+        compiler: xelatex
         root_file: cv.tex
         working_directory: .
     - uses: majkrzak/create-release@master
