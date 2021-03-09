@@ -4,6 +4,8 @@
 \usepackage[none]{hyphenat}
 \usepackage{csquotes}
 \usepackage[english,dutch]{babel}
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=-0.0mm}
 
 \begin{document}
 \header{kiara}{grouwstra}
@@ -102,7 +104,11 @@ linux
     {\href{https://www.unileverfoodsolutions.com/}{Unilever Food Solutions}}
     {data engineer}
     {
-      productionized cloud-based data warehouse using Spark/Azure, prep for \href{https://www.eugdpr.org/}{GDPR}, coached junior data engineers and data scientists
+      \begin{itemize}
+        \item productionized cloud-based data warehouse to replace expensive Oracle stack using Microsoft Azure, Apache Spark, Scala, Python, Apache Airflow, and PostgreSQL;
+        \item helped prepare for \href{https://www.eugdpr.org/}{GDPR} regulations by incorporating design considerations into the data pipeline;
+        \item coached junior data engineers and data scientists.
+      \end{itemize}
     }
 % \entry
 %     {2017–2018}
@@ -112,10 +118,15 @@ linux
 %     % {implemented entity recognition / schema verification, bridged gap between developers and interface designers, outlined incorporating AI in chat bots}
 %     {implemented entity recognition, bridged dev/UX teams, outlined incorporating AI in chat bots}
 \entry
-    {2014–2017}
+    {2012–2017}
     {TGS Holdings}
     {lead software engineer}
-    {led various full-stack and hybrid mobile dev projects (TS/Rails/AWS)}
+    {
+      \begin{itemize}
+        \item led various full-stack and hybrid mobile development projects, hired, trained;
+        \item tools used included JavaScript, TypeScript, Angular, Ionic, React, Ruby on Rails, Python, Haskell, AWS, and Power BI.
+      \end{itemize}
+    }
 % \entry
 %     {2014–2015}
 %     {\href{http://sporebi.com/}{Spore.BI}}
@@ -133,12 +144,16 @@ linux
     {\href{http://www.isentia.com.sg/services/brandtology-social-media}{Brandtology} Shanghai}
     {data miner social media}
     {
-      set up social media monitoring system for the \href{https://www.gov.sg/}{government of Singapore}; automated online marketing insights for
-      \href{https://www.pg.com/}{P \& G},
-      \href{http://www.loreal.com/}{L'Oréal},
-      \href{https://www.nike.com/}{Nike},
-      and
-      \href{http://samsung.com/}{Samsung}
+      \begin{itemize}
+        \item set up social media monitoring system for the \href{https://www.gov.sg/}{government of Singapore};
+        \item automated online marketing insights for
+        \href{https://www.pg.com/}{P\&G},
+        \href{http://www.loreal.com/}{L'Oréal},
+        \href{https://www.nike.com/}{Nike},
+        and
+        \href{http://samsung.com/}{Samsung};
+        stack originally consisted of Visual Basic for Excel, later migrated to .NET.
+      \end{itemize}
     }
 % \entry
 %     {2012}
@@ -167,8 +182,12 @@ linux
       Amsterdam University
     }}
     {
-      grade: 7.8/10
-      ; thesis: \href{https://arxiv.org/abs/2008.12613}{Type-driven Neural Programming by Example}
+      \begin{itemize}
+        \item Grade: 7.8/10. Electives included deep learning, reinforcement learning, computer vision, natural language processing, and information retrieval.
+        \item Course work implementations involved Python, PyTorch, and Conda.
+        \item Thesis: \href{https://arxiv.org/abs/2008.12613}{Type-driven Neural Programming by Example}, presented at \href{https://capworkshop.github.io/}{NeurIPS}.
+        Implemented using Haskell + HaskTorch, deployed using Google Cloud.
+      \end{itemize}
     }
   \entry
     {2009–2011}
